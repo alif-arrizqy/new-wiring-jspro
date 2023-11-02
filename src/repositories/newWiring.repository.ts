@@ -12,6 +12,15 @@ interface INewWiring {
 class NewWiringRepository implements INewWiring {
   async save(newWiring: NewWiring): Promise<NewWiring> {
     try {
+      // validate sites_id in database
+      const isExist = await NewWiring.findOne({
+        where: { sites_id: newWiring.sites_id },
+      });
+      if (isExist) {
+        throw new Error(
+          `sites_id: ${newWiring.sites_id} already exist in database`
+        );
+      }
       return await NewWiring.create({
         sites_id: newWiring.sites_id,
         status: newWiring.status,
