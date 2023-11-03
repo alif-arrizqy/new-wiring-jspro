@@ -19,7 +19,7 @@ export default class NewWiringController {
       const resp = await newWiringRepository.save(newWiring);
       res.status(201).send(resp);
     } catch (err) {
-      res.status(500).send({
+      res.status(200).send({
         message: "failed to create data",
       });
     }
@@ -30,7 +30,7 @@ export default class NewWiringController {
       const response = await newWiringRepository.retrieveAll();
       res.status(200).send(response);
     } catch (err) {
-      res.status(500).send({
+      res.status(200).send({
         message: "some error occured while retrieving data",
       });
     }
@@ -46,7 +46,7 @@ export default class NewWiringController {
           message: `cannot find data with site ${sites_id}`,
         });
     } catch (err) {
-      res.status(500).send({
+      res.status(200).send({
         message: `error find data with site ${sites_id}`,
       });
     }
@@ -65,7 +65,7 @@ export default class NewWiringController {
       }
     } catch (err) {
       res
-        .status(500)
+        .status(200)
         .send({ message: `error updating data with id  ${data.id}` });
     }
   }
