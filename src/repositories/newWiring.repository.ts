@@ -21,12 +21,18 @@ class NewWiringRepository implements INewWiring {
           `sites_id: ${newWiring.sites_id} already exist in database`
         );
       }
-      return await NewWiring.create({
+      const saveData = await NewWiring.create({
         sites_id: newWiring.sites_id,
         status: newWiring.status,
         source_modbus: newWiring.source_modbus.toLowerCase(),
         notes: newWiring.notes,
       });
+
+      const resp:any = {
+        message: "success",
+        data: saveData,
+      }
+      return resp;
     } catch (err) {
       throw new Error(`Failed to create data, ${err}`);
     }
