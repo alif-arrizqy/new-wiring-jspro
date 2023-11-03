@@ -7,7 +7,8 @@ interface IDetailSites {
 class DetailSitesRepository implements IDetailSites {
   async retrieveAll(): Promise<DetailSites[]> {
     try {
-      const data = await DetailSites.findAll();
+      // ascending order
+      const data = await DetailSites.findAll({ order: [["name", "ASC"]] });
       const response: any = {
         message: "success",
         data,
