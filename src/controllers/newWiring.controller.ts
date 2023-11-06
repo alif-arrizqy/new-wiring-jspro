@@ -54,19 +54,19 @@ export default class NewWiringController {
 
   async update(req: Request, res: Response) {
     let data: NewWiring = req.body;
-    data.id = parseInt(req.params.id);
+    data.sites_id = req.params.sites_id;
 
     try {
       const resp = await newWiringRepository.update(data);
       if (resp == 1) {
         res.send({ message: "data was updated successfully" });
       } else {
-        res.send({ message: `cannot update data with id ${data.id}` });
+        res.send({ message: `cannot update data with site id ${data.sites_id}` });
       }
     } catch (err) {
       res
         .status(200)
-        .send({ message: `error updating data with id  ${data.id}` });
+        .send({ message: `error updating data with site id  ${data.sites_id}` });
     }
   }
 

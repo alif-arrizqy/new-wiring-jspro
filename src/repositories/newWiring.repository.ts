@@ -59,7 +59,7 @@ class NewWiringRepository implements INewWiring {
     try {
       const response = await NewWiring.update(
         { sites_id, status, source_modbus, notes },
-        { where: { id: id } }
+        { where: { sites_id: sites_id } }
       );
       return response[0];
     } catch (err) {

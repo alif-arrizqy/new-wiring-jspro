@@ -16,7 +16,7 @@ class NewWiringRoutes {
 
     this.router.get("/:sites_id", this.controller.findOne);
 
-    this.router.put("/:id", this.controller.update);
+    this.router.put("/:sites_id", this.controller.update);
 
     this.router.delete("/:id", this.controller.delete);
 
