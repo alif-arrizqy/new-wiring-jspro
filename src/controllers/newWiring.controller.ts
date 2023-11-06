@@ -20,7 +20,7 @@ export default class NewWiringController {
       res.status(201).send(resp);
     } catch (err) {
       res.status(200).send({
-        message: "failed to create data",
+        message: `${err}`,
       });
     }
   }

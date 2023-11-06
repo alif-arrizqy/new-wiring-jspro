@@ -34,7 +34,7 @@ class NewWiringRepository implements INewWiring {
       }
       return resp;
     } catch (err) {
-      throw new Error(`Failed to create data, ${err}`);
+      throw `${err}`;
     }
   }
 
