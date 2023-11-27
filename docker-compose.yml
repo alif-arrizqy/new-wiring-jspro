@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  new-wiring-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: new-wiring-app
+    restart: unless-stopped
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - ./src:/app/src
+      - node_modules:/usr/src/app/node_modules
+    networks:
+      - new-wiring-network
+
+networks:
+  new-wiring-network:
+
+volumes:
+  node_modules:
+  new-wiring-volume: 
